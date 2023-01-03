@@ -1,1 +1,61 @@
+class Solution {
+    public int evalRPN(String[] tokens) {
+        Stack<Integer> a=new Stack();
+        String po="+-/*";
+        String o=null;
+        
+        for(int i=0;i<tokens.length;i++)
+        {
+            // System.out.println("inside if");
+            String y = tokens[i];
+            if(!(po.contains(y)))
+            {  
+                // int u=Integer.parseInt(y);
+                a.push(Integer.parseInt(y));
+                System.out.println("inserting "+Integer.parseInt(y));
+            }
+            else
+            {
+              o=tokens[i];
+              int x=0,g=0,z=0;
 
+            if(o.equals("+"))
+            {
+                x=a.pop();
+                g=a.pop();
+                z=x+g;
+                a.push(z);
+                System.out.println("inserting "+z);
+            }
+            else if(o.equals("-"))
+            {
+                 x=a.pop();
+                g=a.pop();
+                z=g-x;
+                a.push(z);
+                System.out.println("inserting "+z);
+            }
+           else if(o.equals("*"))
+            {
+                 x=a.pop();
+                g=a.pop();
+                z=x*g;
+                a.push(z);
+                System.out.println("inserting "+z);
+            }
+           else if(o.equals("/"))
+            {
+                 x=a.pop();
+                g=a.pop();
+                z=g/x;
+                a.push(z);
+                System.out.println("inserting "+z);
+            }
+            }
+            
+
+           
+        }
+         return a.pop();
+    }
+}
