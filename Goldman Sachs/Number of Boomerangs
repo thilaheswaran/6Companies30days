@@ -1,0 +1,21 @@
+public class Solution {
+    public int numberOfBoomerangs(int[][] points) {
+        int c = 0;
+        for (int i = 0; i < points.length; i ++) {
+            HashMap<Integer, Integer> s = new HashMap<Integer, Integer>();
+            for (int j = 0; j < points.length; j ++) {
+                int d = (points[j][0] - points[i][0]) * (points[j][0] - points[i][0]) + (points[j][1] - points[i][1]) * (points[j][1] - points[i][1]);
+                if (!s.containsKey(d)) {
+                    s.put(d, 1);
+                }
+                else {
+                    s.put(d, s.get(d) + 1);
+                }
+            }
+            for (Integer su:s.keySet()) {
+                c += s.get(su) * (s.get(su) - 1);
+            }
+        }
+        return c;
+    }
+}
